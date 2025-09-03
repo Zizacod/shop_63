@@ -26,4 +26,7 @@ public interface ProductRepository {
 
     BigDecimal getAveragePrice();
 
+    List<Product> findByActiveTrue();
+
+
 }

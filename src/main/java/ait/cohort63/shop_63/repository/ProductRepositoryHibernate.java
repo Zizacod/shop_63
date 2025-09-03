@@ -5,10 +5,12 @@ import ait.cohort63.shop_63.repository.interfaces.ProductRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import org.hibernate.cfg.Configuration;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Repository
 public class ProductRepositoryHibernate implements ProductRepository {
 
     private EntityManager entityManager;
@@ -170,5 +172,10 @@ public class ProductRepositoryHibernate implements ProductRepository {
     @Override
     public BigDecimal getAveragePrice() {
         return null;
+    }
+
+    @Override
+    public List<Product> findByActiveTrue() {
+        return List.of();
     }
 }
