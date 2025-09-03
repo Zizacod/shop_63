@@ -1,6 +1,7 @@
 package ait.cohort63.shop_63.service;
 
 import ait.cohort63.shop_63.model.entity.Product;
+import ait.cohort63.shop_63.repository.interfaces.ProductRepository;
 import ait.cohort63.shop_63.service.interfaces.ProductService;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,23 @@ import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+    
+    private final ProductRepository productRepository;
+    
+    public ProductServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+    
     @Override
     public Product saveProduct(Product product) {
-        return null;
+        if (product == null) {
+            throw new IllegalArgumentException("Product cannot be null");
+        }
+        
+        // Устанавливаем продукт как активный по умолчанию
+        product.setActive(true);
+        
+        return productRepository.save(product);
     }
 
     @Override

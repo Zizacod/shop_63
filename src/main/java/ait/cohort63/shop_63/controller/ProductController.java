@@ -26,7 +26,8 @@ public class ProductController {
 
     @PostMapping()
     public Product saveProduct(@RequestBody Product product) {
-        return product;
+        return productService.saveProduct(product);
+
     }
 
     @GetMapping("/{id}")
